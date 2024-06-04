@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -16,7 +16,9 @@ function App() {
         </thead>
         <tbody>
           <tr>
-            <td>1. Entrar no arquivo App.js e adicionar mais algum elemento HTML</td>
+            <td>
+              1. Entrar no arquivo App.js e adicionar mais algum elemento HTML
+            </td>
             <td>[x]</td>
           </tr>
           <tr>
@@ -24,11 +26,12 @@ function App() {
             <td>[x]</td>
           </tr>
           <tr>
-            <td>3. Vá até o index.html e altere o título da aplicação na meta tag</td>
+            <td>
+              3. Vá até o index.html e altere o título da aplicação na meta tag
+            </td>
             <td>[x]</td>
           </tr>
         </tbody>
-        
       </table>
     </div>
   );
