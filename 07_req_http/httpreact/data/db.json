@@ -34,41 +34,6 @@
       "id": "8615",
       "name": "Mouse",
       "price": "65.0"
-    },
-    {
-      "id": "f8f4",
-      "name": "cadeira",
-      "price": "200"
-    },
-    {
-      "id": "1b45",
-      "name": "Tv",
-      "price": "1500"
-    },
-    {
-      "id": "5509",
-      "name": "cabo hdmi",
-      "price": "25.00"
-    },
-    {
-      "id": "1aca",
-      "name": "cabo hdmi",
-      "price": "25.00"
-    },
-    {
-      "id": "5fcb",
-      "name": "Monitor Gamer",
-      "price": "2500"
-    },
-    {
-      "id": "2f37",
-      "name": "Monitor Gamer",
-      "price": "2500"
-    },
-    {
-      "id": "7ed7",
-      "name": "Monitor Gamer 2",
-      "price": "2550"
     }
   ]
 }

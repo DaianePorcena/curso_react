@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // custom hook
 import { useFetch } from "./hooks/useFetch";
@@ -8,7 +8,7 @@ import { useFetch } from "./hooks/useFetch";
 const url = "http://localhost:3000/products";
 
 function App() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
   const { data: items, httpConfig, loading, error } = useFetch(url);
 
@@ -52,6 +52,11 @@ function App() {
     httpConfig(product, "POST");
   };
 
+  // 8 - desafio 6 (delete)
+  const handleRemove = (id) => {
+    httpConfig(id, "DELETE");
+  };
+
   return (
     <div className="App">
       <h1>Lista de Produtos</h1>
@@ -64,6 +69,9 @@ function App() {
             items.map((product) => (
               <li key={product.id}>
                 {product.name} - R$: {product.price}
+                <button onClick={() => handleRemove(product.id)}>
+                  Excluir
+                </button>
               </li>
             ))}
         </ul>
