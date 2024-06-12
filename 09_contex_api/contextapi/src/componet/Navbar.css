@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  padding: 5px;
+  text-decoration: none;
+  color: rgb(228, 194, 0);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: rgb(223, 134, 0);
+}
+
+.active {
+  background-color: black;
+}
