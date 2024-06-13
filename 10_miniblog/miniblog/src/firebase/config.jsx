@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore/lite";
 
+// Configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAuILXhHSTXkyQyXRU4qgNbKwkeTbDHetM",
   authDomain: "miniblog-react-59cce.firebaseapp.com",
@@ -11,7 +12,4 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-export { db };
+export const db = getFirestore(app);
