@@ -8,7 +8,7 @@ import {
 
 import { useState, useEffect } from "react";
 
-import { db } from "../firebase/config"; // Certifique-se de que este caminho está correto
+import { app } from "../firebase/config"; // Certifique-se de que este caminho está correto
 
 export const useAuthentication = () => {
   const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ export const useAuthentication = () => {
   // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   function checkIfIsCancelled() {
     if (cancelled) {
@@ -71,6 +71,31 @@ export const useAuthentication = () => {
     signOut(auth);
   };
 
+  // login
+  const login = async (data) => {
+    checkIfIsCancelled();
+
+    setLoading(true);
+    setError(false);
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      setLoading(false);
+    } catch (error) {
+      let systemErrorMessage;
+      console.log(error);
+
+      if (error.message.includes("invalid-credential")) {
+        systemErrorMessage = "Usuário ou senha inválidos.";
+      } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tenta mais tarde.";
+      }
+
+      setError(systemErrorMessage);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
@@ -81,5 +106,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   };
 };
