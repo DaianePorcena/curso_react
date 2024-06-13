@@ -5,7 +5,7 @@ import { useAuthentication } from "../../hooks/useAuthentication";
 import { useState, useEffect } from "react";
 
 const Register = () => {
-  const [displayname, setDisplayname] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,7 +19,7 @@ const Register = () => {
     setError("");
 
     const user = {
-      displayname,
+      displayName,
       email,
       password,
     };
@@ -49,11 +49,11 @@ const Register = () => {
           <span>Nome:</span>
           <input
             type="text"
-            name="displayname"
+            name="displayName"
             required
             placeholder="Nome do usuário"
-            value={displayname}
-            onChange={(e) => setDisplayname(e.target.value)}
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
           />
         </label>
         <label>
