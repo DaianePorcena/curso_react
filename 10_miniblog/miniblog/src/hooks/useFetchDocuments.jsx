@@ -4,9 +4,9 @@ import {
   collection,
   query,
   orderBy,
-  onSnapshot,
+  getDocs,
   where,
-} from "firebase/firestore";
+} from "firebase/firestore/lite";
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [documents, setDocuments] = useState(null);
@@ -27,16 +27,22 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
       try {
         let q;
 
-        q = await query(collectionRef, orderBy("createdAt", "desc"));
-
-        await onSnapshot(q, (querySnapshot) => {
-          setDocuments(
-            querySnapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }))
+        if (search) {
+          q = await query(
+            collectionRef,
+            where("tags", "array-contains", search),
+            orderBy("createdAt", "desc")
           );
-        });
+        } else {
+          q = await query(collectionRef, orderBy("createdAt", "desc"));
+        }
+        const querySnapshot = await getDocs(q);
+
+        const docs = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDocuments(docs);
         setLoading(false);
       } catch (error) {
         console.log(error);
