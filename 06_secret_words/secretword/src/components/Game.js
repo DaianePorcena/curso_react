@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import "./Game.css";
 
 const Game = ({
   verifyLetter,
@@ -22,13 +21,14 @@ const Game = ({
 
     letterInputRef.current.focus();
   };
+
   return (
     <div className="game">
       <p className="points">
         <span>Pontuação: {score}</span>
       </p>
       <h1>Adivinhe a palavra:</h1>
-      <h3 className="tip">
+      <h3>
         Dica sobre a palavra: <span>{pickedCategory}</span>
       </h3>
       <p>Você ainda tem {guesses} tentativas</p>

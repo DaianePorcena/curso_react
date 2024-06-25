@@ -1,5 +1,3 @@
-import "./StartScreen.css";
-
 const StartScreen = ({ startGame }) => {
   return (
     <div className="start">
