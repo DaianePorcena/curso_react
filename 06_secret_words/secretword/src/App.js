@@ -1,6 +1,3 @@
-// CSS
-import "./App.css";
-
 // React
 import { useCallback, useEffect, useState } from "react";
 
@@ -33,45 +30,45 @@ function App() {
   const [guesses, setGuesses] = useState(guessQty);
   const [score, setScore] = useState(0);
 
+  // escolher palavra e categoria
   const pickWordCategory = useCallback(() => {
-    // pick random category
+    // escolha aleatória de categoria
     const categories = Object.keys(words);
     const category =
       categories[Math.floor(Math.random() * Object.keys(categories).length)];
 
-    // pick random word
+    // escolha aleatória de palavra
     const word =
       words[category][Math.floor(Math.random() * words[category].length)];
 
     return { word, category };
   }, [words]);
 
-  // starts the secret word game
+  // iniciar o jogo
   const startGame = useCallback(() => {
-    // clear all letters
+    // limpar todas as letras
     clearLetterStates();
 
-    // pick word and pick category
+    // escolher palavra e categoria
     const { word, category } = pickWordCategory();
 
-    // create an array of letters
+    // criar array de letras
     let wordLetters = word.split("");
 
     wordLetters = wordLetters.map((l) => l.toLowerCase());
 
-    // fill states
+    // preencher estados
     setPickedWord(word);
     setPickedCategory(category);
     setLetters(wordLetters);
-
     setGameStage(stages[1].name);
   }, [pickWordCategory]);
 
-  // process the letter inut
+  // processar a entrada da letra
   const verifyLetter = (letter) => {
     const normalizedLetter = letter.toLowerCase();
 
-    // check if letter has already been utilized
+    // verificar se a letra já foi utilizada
     if (
       guessedLetters.includes(normalizedLetter) ||
       wrongLetters.includes(normalizedLetter)
@@ -79,7 +76,7 @@ function App() {
       return;
     }
 
-    // push guessed letter or remove a guess
+    // add a letra adivinhada ou remova um palpite
     if (letters.includes(normalizedLetter)) {
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
@@ -100,10 +97,10 @@ function App() {
     setWrongLetters([]);
   };
 
-  // check if guesses ended
+  // verificar se os palpites acabaram
   useEffect(() => {
     if (guesses <= 0) {
-      // reset all states
+      // resetar todos os estados
       clearLetterStates();
       setGameStage(stages[2].name);
     }
@@ -112,12 +109,11 @@ function App() {
   useEffect(() => {
     const uniqueLetters = [...new Set(letters)];
 
-    // win condition
+    // condição de vitória
     if (guessedLetters.length === uniqueLetters.length) {
-      // add score
-      setScore((actualScore) => (actualScore += 1));
-
-      // restart game with new word
+      // adicionar pontos
+      setScore((actualScore) => (actualScore += 10));
+      // reiniciar o jogo
       startGame();
     }
   }, [guessedLetters, letters, startGame]);

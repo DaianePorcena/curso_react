@@ -1,0 +1,8 @@
+@use './variables';
+
+h2 {
+  span {
+    color: variables.$secondary-color;
+    font-size: 1.5em;
+  }
+}

@@ -1,0 +1,42 @@
+@use './variables';
+
+html, body {
+  height: 100%;
+}
+
+body{
+  font-family: variables.$primary-font;
+  margin: 0;
+  padding: 0;
+  color: variables.$primary-color;
+  background: linear-gradient(
+    180deg,
+    variables.$gradient-start 0%,
+    variables.$gradient-end 100%);
+
+    button {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-transform: uppercase;
+      height: 50px;
+      padding: 0 45px;
+      border: 2px solid variables.$primary-color;
+      border-radius: 25px;
+      color: variables.$primary-color;
+      background: variables.$button-bg;
+      cursor: pointer;
+
+      &:hover{
+        background-color: darken(variables.$button-bg, 10%);
+      }
+    }
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
